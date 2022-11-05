@@ -32,7 +32,6 @@ const config = {
     ...Object.keys(packageJson.dependencies),
     /^@material-ui\/.*/,
     'react-reflex/styles.css',
-    'monaco-editor/esm/vs/editor/editor.api',
     'react-spring/web.cjs',
   ],
 };

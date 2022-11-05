@@ -5,7 +5,7 @@
  * https://github.com/eclipsesource/jsonforms-editor/blob/master/LICENSE
  * ---------------------------------------------------------------------
  */
-import { SchemaService } from '@jsonforms/editor';
+import { SchemaService } from '@gergelyszaz/jsonforms-editor';
 
 const exampleSchema = {
   type: 'object',

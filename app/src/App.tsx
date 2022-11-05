@@ -9,7 +9,7 @@ import {
   defaultSchemaDecorators,
   defaultSchemaProviders,
   JsonFormsEditor,
-} from '@jsonforms/editor';
+} from '@gergelyszaz/jsonforms-editor';
 import React from 'react';
 
 import { Footer } from './components/Footer';
