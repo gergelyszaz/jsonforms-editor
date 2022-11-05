@@ -43,26 +43,9 @@ export const EditorPanel: React.FC<EditorPanelProps> = ({
     <div className={classes.editorPanel}>
       <Tabs value={selectedTab} onChange={handleTabChange}>
         <Tab label='Editor' />
-        {editorTabs
-          ? editorTabs.map((tab) => (
-              <Tab key={`tab-${tab.name}`} label={tab.name} />
-            ))
-          : null}
       </Tabs>
-      <TabContent index={0} currentIndex={selectedTab}>
-        <Editor editorRenderers={editorRenderers} />
-      </TabContent>
-      {editorTabs
-        ? editorTabs.map((tab, index) => (
-            <TabContent
-              key={`content-${index + 1}`}
-              index={index + 1}
-              currentIndex={selectedTab}
-            >
-              <tab.Component />
-            </TabContent>
-          ))
-        : null}
+
+      <Editor editorRenderers={editorRenderers} />
     </div>
   );
 };
