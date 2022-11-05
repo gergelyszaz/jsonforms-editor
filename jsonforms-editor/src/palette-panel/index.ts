@@ -8,5 +8,4 @@
 
 export type { PaletteTab } from './components/PalletePanel';
 export * from './components/PalletePanel';
-export { JsonSchemaPanel } from './components/JsonSchemaPanel';
 export * from './components/UISchemaPanel';

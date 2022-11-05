@@ -1,4 +1,4 @@
 {
-  "packages": ["app", "jsonforms-editor", "testapp"],
+  "packages": ["app", "jsonforms-editor"],
   "version": "0.1.0"
 }

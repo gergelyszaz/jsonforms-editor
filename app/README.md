@@ -26,9 +26,6 @@ We use `rescripts` to customize non-configurable CRA features:
 - We add the `MonacoWebpackPlugin` to the build
 - We also add the `@jsonforms/editor` sources to the build.
 
-By consuming the sources we don't exactly behave like a regular consumer of the library.
-See the [testapp](../testapp) for smoke tests regarding this use case.
-
 ### Scripts
 
 - Start the app with `npm start`

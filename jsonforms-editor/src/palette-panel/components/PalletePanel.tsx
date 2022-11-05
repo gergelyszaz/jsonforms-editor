@@ -11,7 +11,6 @@ import React, { useState } from 'react';
 import { TabContent } from '../../core/components';
 import { usePaletteService, useSchema } from '../../core/context';
 import { SchemaElement } from '../../core/model';
-import { JsonSchemaPanel } from './JsonSchemaPanel';
 import { SchemaTreeView } from './SchemaTree';
 import { UIElementsTree } from './UIElementsTree';
 import { UISchemaPanel } from './UISchemaPanel';
@@ -36,13 +35,7 @@ export interface PalettePanelProps {
   paletteTabs?: PaletteTab[];
 }
 
-export const defaultPalettePanelTabs: PaletteTab[] = [
-  {
-    name: 'JSON Schema',
-    Component: <JsonSchemaPanel />,
-  },
-  { name: 'UI Schema', Component: <UISchemaPanel /> },
-];
+export const defaultPalettePanelTabs: PaletteTab[] = [];
 
 export const PalettePanel: React.FC<PalettePanelProps> = ({ paletteTabs }) => {
   const [selectedTab, setSelectedTab] = useState(0);
