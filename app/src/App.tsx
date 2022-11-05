@@ -21,7 +21,6 @@ export const App = () => (
     schemaService={schemaService}
     schemaProviders={defaultSchemaProviders}
     schemaDecorators={defaultSchemaDecorators}
-    editorTabs={[]}
     footer={Footer}
   />
 );

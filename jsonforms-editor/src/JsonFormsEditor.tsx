@@ -94,7 +94,6 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
   schemaProviders,
   schemaDecorators,
   editorRenderers = defaultEditorRenderers,
-  paletteTabs = defaultPalettePanelTabs,
   propertyRenderers = defaultPropertyRenderers,
 }) => {
   const [{ schema, uiSchema }, dispatch] = useReducer(editorReducer, {
@@ -145,7 +144,6 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
         <JsonFormsEditorUi
           editorRenderers={editorRenderers}
           propertyRenderers={propertyRenderers}
-          paletteTabs={paletteTabs ?? undefined}
         />
       </DndProvider>
     </EditorContextInstance.Provider>
@@ -156,17 +154,11 @@ interface JsonFormsEditorUiProps {
   editorTabs?: EditorTab[];
   editorRenderers: JsonFormsRendererRegistryEntry[];
   propertyRenderers: JsonFormsRendererRegistryEntry[];
-  header?: ComponentType;
-  footer?: ComponentType;
-  paletteTabs?: PaletteTab[];
 }
 const JsonFormsEditorUi: React.FC<JsonFormsEditorUiProps> = ({
   editorTabs,
   editorRenderers,
   propertyRenderers,
-  header,
-  footer,
-  paletteTabs,
 }) => {
   const classes = useStyles();
   return (
@@ -177,22 +169,17 @@ const JsonFormsEditorUi: React.FC<JsonFormsEditorUiProps> = ({
       >
         <ReflexElement minSize={200} flex={1}>
           <div className={`${classes.pane} ${classes.leftPane}`}>
-            <PalettePanel paletteTabs={paletteTabs} />
+            <PalettePanel />
+            <PropertiesPanel propertyRenderers={propertyRenderers} />
           </div>
         </ReflexElement>
         <ReflexSplitter propagate />
-        <ReflexElement minSize={200} flex={2}>
-          <div className={`${classes.pane} ${classes.centerPane}`}>
+        <ReflexElement minSize={200} flex={3}>
+          <div className={`${classes.pane} ${classes.rightPane}`}>
             <EditorPanel
               editorTabs={editorTabs}
               editorRenderers={editorRenderers}
             />
-          </div>
-        </ReflexElement>
-        <ReflexSplitter propagate />
-        <ReflexElement minSize={200} flex={1}>
-          <div className={`${classes.pane} ${classes.rightPane}`}>
-            <PropertiesPanel propertyRenderers={propertyRenderers} />
           </div>
         </ReflexElement>
       </ReflexContainer>
