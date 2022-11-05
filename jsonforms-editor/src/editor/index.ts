@@ -17,15 +17,9 @@ import {
   DroppableHorizontalLayoutRegistration,
   DroppableVerticalLayoutRegistration,
 } from '../core/renderers/DroppableLayout';
-import { EditorTab } from './components/EditorPanel';
-import { ReactMaterialPreview } from './components/preview';
 
 export * from './components/EditorPanel';
 export { EditorElement } from './components/EditorElement';
-
-export const defaultEditorTabs: EditorTab[] = [
-  { name: 'Preview', Component: ReactMaterialPreview },
-];
 
 export const defaultEditorRenderers: JsonFormsRendererRegistryEntry[] = [
   ...materialRenderers,

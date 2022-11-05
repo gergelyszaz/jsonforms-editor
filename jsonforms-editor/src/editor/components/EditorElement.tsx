@@ -11,7 +11,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react';
 import { useDrag } from 'react-dnd';
 
-import { OkCancelDialog } from '../../core/components/OkCancelDialog';
 import { useDispatch, useSchema, useSelection } from '../../core/context';
 import { DndItems } from '../../core/dnd';
 import { SchemaIcon, UISchemaIcon } from '../../core/icons';
@@ -70,8 +69,6 @@ export const EditorElement: React.FC<EditorElementProps> = ({
   const schema = useSchema();
   const [selection, setSelection] = useSelection();
   const dispatch = useDispatch();
-  const [openConfirmRemoveDialog, setOpenConfirmRemoveDialog] =
-    React.useState(false);
   const elementSchema = tryFindByUUID(
     schema,
     wrappedElement.linkedSchemaElement
@@ -164,23 +161,11 @@ export const EditorElement: React.FC<EditorElementProps> = ({
             data-cy={`editorElement-${uiPath}-removeButton`}
             size='small'
             onClick={() => {
-              hasChildren(wrappedElement)
-                ? setOpenConfirmRemoveDialog(true)
-                : dispatch(Actions.removeUiSchemaElement(wrappedElement.uuid));
+              dispatch(Actions.removeUiSchemaElement(wrappedElement.uuid));
             }}
           >
             <DeleteIcon />
           </IconButton>
-
-          <OkCancelDialog
-            open={openConfirmRemoveDialog}
-            text={'Remove element and all its contents from the UI Schema?'}
-            onOk={() => {
-              dispatch(Actions.removeUiSchemaElement(wrappedElement.uuid));
-              setOpenConfirmRemoveDialog(false);
-            }}
-            onCancel={() => setOpenConfirmRemoveDialog(false)}
-          />
         </Grid>
       </Grid>
       {children}

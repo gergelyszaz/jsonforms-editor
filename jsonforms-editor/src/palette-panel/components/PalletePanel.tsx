@@ -13,7 +13,6 @@ import { usePaletteService, useSchema } from '../../core/context';
 import { SchemaElement } from '../../core/model';
 import { SchemaTreeView } from './SchemaTree';
 import { UIElementsTree } from './UIElementsTree';
-import { UISchemaPanel } from './UISchemaPanel';
 
 const useStyles = makeStyles((theme) => ({
   uiElementsTree: {

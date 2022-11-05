@@ -17,7 +17,6 @@ export * from './core/jsonschema';
 export * from './core/model';
 export * from './core/selection';
 export * from './core/util';
-export * from './editor/components/preview';
 export * from './editor';
 export * from './text-editor';
 export * from './palette-panel';

@@ -8,4 +8,3 @@
 
 export type { PaletteTab } from './components/PalletePanel';
 export * from './components/PalletePanel';
-export * from './components/UISchemaPanel';

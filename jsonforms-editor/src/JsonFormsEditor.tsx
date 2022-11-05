@@ -24,16 +24,11 @@ import {
   PaletteService,
 } from './core/api/paletteService';
 import { EmptySchemaService, SchemaService } from './core/api/schemaService';
-import { Footer, Header, Layout } from './core/components';
 import { EditorContextInstance } from './core/context';
 import { Actions, editorReducer } from './core/model';
 import { SelectedElement } from './core/selection';
 import { tryFindByUUID } from './core/util/schemasUtil';
-import {
-  defaultEditorRenderers,
-  defaultEditorTabs,
-  EditorPanel,
-} from './editor';
+import { defaultEditorRenderers, EditorPanel } from './editor';
 import { EditorTab } from './editor/components/EditorPanel';
 import {
   defaultPalettePanelTabs,
@@ -99,11 +94,8 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
   schemaProviders,
   schemaDecorators,
   editorRenderers = defaultEditorRenderers,
-  editorTabs: editorTabsProp = defaultEditorTabs,
   paletteTabs = defaultPalettePanelTabs,
   propertyRenderers = defaultPropertyRenderers,
-  header = Header,
-  footer = Footer,
 }) => {
   const [{ schema, uiSchema }, dispatch] = useReducer(editorReducer, {
     categorizationService: defaultCategorizationService,
@@ -113,9 +105,6 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
   const [propertiesService] = useState<PropertiesService>(
     propertiesServiceProvider(schemaProviders, schemaDecorators)
   );
-  const editorTabs = editorTabsProp ?? undefined;
-  const headerComponent = header ?? undefined;
-  const footerComponent = footer ?? undefined;
 
   useEffect(() => {
     schemaService
@@ -155,10 +144,7 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
       <DndProvider backend={Backend}>
         <JsonFormsEditorUi
           editorRenderers={editorRenderers}
-          editorTabs={editorTabs}
           propertyRenderers={propertyRenderers}
-          header={headerComponent}
-          footer={footerComponent}
           paletteTabs={paletteTabs ?? undefined}
         />
       </DndProvider>
@@ -184,7 +170,7 @@ const JsonFormsEditorUi: React.FC<JsonFormsEditorUiProps> = ({
 }) => {
   const classes = useStyles();
   return (
-    <Layout HeaderComponent={header} FooterComponent={footer}>
+    <div>
       <ReflexContainer
         orientation='vertical'
         className={classes.reflexContainer}
@@ -210,6 +196,6 @@ const JsonFormsEditorUi: React.FC<JsonFormsEditorUiProps> = ({
           </div>
         </ReflexElement>
       </ReflexContainer>
-    </Layout>
+    </div>
   );
 };
