@@ -30,11 +30,7 @@ import { SelectedElement } from './core/selection';
 import { tryFindByUUID } from './core/util/schemasUtil';
 import { defaultEditorRenderers, EditorPanel } from './editor';
 import { EditorTab } from './editor/components/EditorPanel';
-import {
-  defaultPalettePanelTabs,
-  PalettePanel,
-  PaletteTab,
-} from './palette-panel';
+import { PalettePanel, PaletteTab } from './palette-panel';
 import { defaultPropertyRenderers, PropertiesPanel } from './properties';
 import {
   PropertiesService,
@@ -151,38 +147,23 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
 };
 
 interface JsonFormsEditorUiProps {
-  editorTabs?: EditorTab[];
   editorRenderers: JsonFormsRendererRegistryEntry[];
   propertyRenderers: JsonFormsRendererRegistryEntry[];
 }
-const JsonFormsEditorUi: React.FC<JsonFormsEditorUiProps> = ({
-  editorTabs,
+function JsonFormsEditorUi({
   editorRenderers,
   propertyRenderers,
-}) => {
+}: JsonFormsEditorUiProps) {
   const classes = useStyles();
   return (
     <div>
-      <ReflexContainer
-        orientation='vertical'
-        className={classes.reflexContainer}
-      >
-        <ReflexElement minSize={200} flex={1}>
-          <div className={`${classes.pane} ${classes.leftPane}`}>
-            <PalettePanel />
-            <PropertiesPanel propertyRenderers={propertyRenderers} />
-          </div>
-        </ReflexElement>
-        <ReflexSplitter propagate />
-        <ReflexElement minSize={200} flex={3}>
-          <div className={`${classes.pane} ${classes.rightPane}`}>
-            <EditorPanel
-              editorTabs={editorTabs}
-              editorRenderers={editorRenderers}
-            />
-          </div>
-        </ReflexElement>
-      </ReflexContainer>
+      <div className={`${classes.pane} ${classes.leftPane}`}>
+        <PalettePanel />
+        <PropertiesPanel propertyRenderers={propertyRenderers} />
+      </div>
+      <div className={`${classes.pane} ${classes.rightPane}`}>
+        <EditorPanel editorRenderers={editorRenderers} />
+      </div>
     </div>
   );
-};
+}

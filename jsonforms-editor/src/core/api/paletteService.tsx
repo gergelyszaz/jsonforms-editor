@@ -37,7 +37,7 @@ const paletteElements: PaletteElement[] = [
   {
     type: 'HorizontalLayout',
     label: 'Horizontal Layout',
-    icon: <HorizontalIcon />,
+    icon: <VerticalIcon />,
     uiSchemaElementProvider: () => createLayout('HorizontalLayout'),
   } as PaletteElement,
   {

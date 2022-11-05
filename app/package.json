@@ -25,9 +25,6 @@
     "build": "rescripts build",
     "test": "rescripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run --config video=false",
-    "cypress:ci": "BROWSER=none start-server-and-test start http://localhost:3000 cypress:run",
     "lint": "eslint --ext js,jsx,ts,tsx src cypress"
   },
   "browserslist": {

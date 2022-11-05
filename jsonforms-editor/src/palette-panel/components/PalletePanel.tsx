@@ -30,13 +30,7 @@ export interface PaletteTab {
   Component: React.ReactElement;
 }
 
-export interface PalettePanelProps {
-  paletteTabs?: PaletteTab[];
-}
-
-export const defaultPalettePanelTabs: PaletteTab[] = [];
-
-export const PalettePanel: React.FC<PalettePanelProps> = ({ paletteTabs }) => {
+export const PalettePanel: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setSelectedTab(newValue);
@@ -48,15 +42,6 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ paletteTabs }) => {
     <div className={classes.palettePanel}>
       <Tabs value={selectedTab} onChange={handleTabChange} variant='scrollable'>
         <Tab label='Palette' data-cy='palette-tab' />
-        {paletteTabs
-          ? paletteTabs.map((tab) => (
-              <Tab
-                key={`tab-${tab.name}`}
-                label={tab.name}
-                data-cy={`tab-${tab.name}`}
-              />
-            ))
-          : null}
       </Tabs>
       <TabContent index={0} currentIndex={selectedTab}>
         <UIElementsTree
@@ -65,17 +50,6 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ paletteTabs }) => {
         />
         <SchemaTreeView schema={schema} />
       </TabContent>
-      {paletteTabs
-        ? paletteTabs.map((tab, index) => (
-            <TabContent
-              key={`tab-content-${index + 1}`}
-              index={index + 1}
-              currentIndex={selectedTab}
-            >
-              {tab.Component}
-            </TabContent>
-          ))
-        : null}
     </div>
   );
 };

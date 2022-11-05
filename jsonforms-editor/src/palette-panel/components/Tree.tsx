@@ -40,7 +40,7 @@ const PaletteTransitionComponent = (props: TransitionProps) => {
   );
 };
 
-export const StyledTreeView = styled(TreeView)({ flexGrow: 1, maxWidth: 400 });
+export const StyledTreeView = TreeView;
 
 const treeItemStyles = (theme: Theme) =>
   createStyles({
@@ -59,12 +59,13 @@ const treeItemStyles = (theme: Theme) =>
     },
   });
 
-interface StyledTreeItemProps extends WithStyles<typeof treeItemStyles> {
+interface StyledTreeItemProps {
   isDragging: boolean;
 }
 
-export const StyledTreeItem = withStyles(treeItemStyles)(
-  ({ isDragging, ...props }: StyledTreeItemProps & TreeItemProps) => (
-    <TreeItem {...props} TransitionComponent={PaletteTransitionComponent} />
-  )
+export const StyledTreeItem = ({
+  isDragging,
+  ...props
+}: StyledTreeItemProps & TreeItemProps) => (
+  <TreeItem {...props} TransitionComponent={PaletteTransitionComponent} />
 );
