@@ -5,10 +5,9 @@
  * https://github.com/eclipsesource/jsonforms-editor/blob/master/LICENSE
  * ---------------------------------------------------------------------
  */
-import { makeStyles, Tab, Tabs } from '@material-ui/core';
-import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core';
+import React from 'react';
 
-import { TabContent } from '../../core/components';
 import { usePaletteService, useSchema } from '../../core/context';
 import { SchemaElement } from '../../core/model';
 import { SchemaTreeView } from './SchemaTree';
@@ -31,25 +30,17 @@ export interface PaletteTab {
 }
 
 export const PalettePanel: React.FC = () => {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setSelectedTab(newValue);
-  };
   const schema: SchemaElement | undefined = useSchema();
   const paletteService = usePaletteService();
   const classes = useStyles();
   return (
     <div className={classes.palettePanel}>
-      <Tabs value={selectedTab} onChange={handleTabChange} variant='scrollable'>
-        <Tab label='Palette' data-cy='palette-tab' />
-      </Tabs>
-      <TabContent index={0} currentIndex={selectedTab}>
-        <UIElementsTree
-          className={classes.uiElementsTree}
-          elements={paletteService.getPaletteElements()}
-        />
-        <SchemaTreeView schema={schema} />
-      </TabContent>
+      <h1>Palette</h1>
+      <UIElementsTree
+        className={classes.uiElementsTree}
+        elements={paletteService.getPaletteElements()}
+      />
+      <SchemaTreeView schema={schema} />
     </div>
   );
 };
