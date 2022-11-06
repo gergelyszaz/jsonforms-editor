@@ -71,7 +71,7 @@ const defaultPropertiesService = (
 ) => new PropertiesServiceImpl(schemaProviders, schemaDecorators);
 const defaultCategorizationService = new CategorizationServiceImpl();
 
-export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
+export function JsonFormsEditor({
   schemaService = defaultSchemaService,
   paletteService = defaultPaletteService,
   categorizationService = defaultCategorizationService,
@@ -80,7 +80,7 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
   schemaDecorators,
   editorRenderers = defaultEditorRenderers,
   propertyRenderers = defaultPropertyRenderers,
-}) => {
+}: JsonFormsEditorProps) {
   const [{ schema, uiSchema }, dispatch] = useReducer(editorReducer, {
     categorizationService: defaultCategorizationService,
   });
@@ -133,7 +133,7 @@ export const JsonFormsEditor: React.FC<JsonFormsEditorProps> = ({
       </DndProvider>
     </EditorContextInstance.Provider>
   );
-};
+}
 
 interface JsonFormsEditorUiProps {
   editorRenderers: JsonFormsRendererRegistryEntry[];

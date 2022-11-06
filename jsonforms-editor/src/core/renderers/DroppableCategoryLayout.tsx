@@ -13,7 +13,7 @@ import React from 'react';
 import { EditorLayout } from '../model/uischema';
 import { DroppableLayout } from './DroppableLayout';
 
-const CategoryLayout: React.FC<LayoutProps> = (props) => {
+function CategoryLayout(props: LayoutProps) {
   const { uischema } = props;
   const categoryLayout = uischema as Category & EditorLayout;
   return (
@@ -27,7 +27,7 @@ const CategoryLayout: React.FC<LayoutProps> = (props) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 export const DroppableCategoryLayoutRegistration = {
   tester: rankWith(45, uiTypeIs('Category')),

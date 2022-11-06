@@ -28,7 +28,7 @@ const theme = createTheme({
 export interface EditorProps {
   editorRenderers: JsonFormsRendererRegistryEntry[];
 }
-export const Editor: React.FC<EditorProps> = ({ editorRenderers }) => {
+export function Editor({ editorRenderers }: EditorProps) {
   const schema = useExportSchema();
   const uiSchema = useUiSchema();
   return uiSchema ? (
@@ -46,4 +46,4 @@ export const Editor: React.FC<EditorProps> = ({ editorRenderers }) => {
   ) : (
     <EmptyEditor />
   );
-};
+}

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Group: React.FC<LayoutProps> = (props) => {
+function Group(props: LayoutProps) {
   const { uischema } = props;
   const groupLayout = uischema as GroupLayout & EditorLayout;
   const classes = useStyles();
@@ -70,7 +70,7 @@ const Group: React.FC<LayoutProps> = (props) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 export const DroppableGroupLayoutRegistration = {
   tester: rankWith(45, uiTypeIs('Group')),

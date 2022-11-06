@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   }),
 });
 
-export const EmptyEditor: React.FC = () => {
+export function EmptyEditor() {
   const dispatch = useDispatch();
   const [{ isOver, uiSchemaElement }, drop] = useDrop({
     accept: NEW_UI_SCHEMA_ELEMENT,
@@ -43,4 +43,4 @@ export const EmptyEditor: React.FC = () => {
       </Typography>
     </div>
   );
-};
+}

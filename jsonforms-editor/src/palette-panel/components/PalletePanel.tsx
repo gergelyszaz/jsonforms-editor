@@ -29,7 +29,7 @@ export interface PaletteTab {
   Component: React.ReactElement;
 }
 
-export const PalettePanel: React.FC = () => {
+export function PalettePanel() {
   const schema: SchemaElement | undefined = useSchema();
   const paletteService = usePaletteService();
   const classes = useStyles();
@@ -43,4 +43,4 @@ export const PalettePanel: React.FC = () => {
       <SchemaTreeView schema={schema} />
     </div>
   );
-};
+}

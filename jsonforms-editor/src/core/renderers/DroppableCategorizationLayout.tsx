@@ -34,9 +34,9 @@ interface DroppableCategorizationLayoutProps extends StatePropsOfLayout {
   uischema: CategorizationLayout;
 }
 
-const DroppableCategorizationLayout: React.FC<
-  DroppableCategorizationLayoutProps
-> = (props) => {
+function DroppableCategorizationLayout(
+  props: DroppableCategorizationLayoutProps
+) {
   const { uischema, schema, path, renderers, cells } = props;
 
   // ignoring the first selection from the tuple since it is not used
@@ -155,7 +155,7 @@ const DroppableCategorizationLayout: React.FC<
       </CardContent>
     </Card>
   );
-};
+}
 
 export const DroppableCategorizationLayoutRegistration = {
   tester: rankWith(40, isCategorization), // less than DroppableElement

@@ -17,13 +17,13 @@ import { EditorControl } from '../model/uischema';
 interface DroppableElementProps extends ControlProps {
   uischema: EditorControl;
 }
-const DroppableElement: React.FC<DroppableElementProps> = ({
+function DroppableElement({
   uischema,
   schema,
   path,
   renderers,
   cells,
-}) => {
+}: DroppableElementProps) {
   const editorUiSchema = useMemo(() => omit(uischema, ['rule']), [uischema]);
   return (
     <EditorElement wrappedElement={uischema}>
@@ -38,7 +38,7 @@ const DroppableElement: React.FC<DroppableElementProps> = ({
       />
     </EditorElement>
   );
-};
+}
 const DroppableElementRenderer = DroppableElement;
 export const DroppableElementRegistration = {
   tester: rankWith(50, () => true),

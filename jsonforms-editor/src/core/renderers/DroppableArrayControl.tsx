@@ -45,13 +45,13 @@ const useStyles = makeStyles({
 interface DroppableArrayControlProps extends ArrayControlProps {
   uischema: EditorControl;
 }
-const DroppableArrayControl: React.FC<DroppableArrayControlProps> = ({
+function DroppableArrayControl({
   uischema,
   schema,
   path,
   renderers,
   cells,
-}) => {
+}: DroppableArrayControlProps) {
   const dispatch = useDispatch();
   const rootSchema = useSchema();
   const [{ isOver, uiSchemaElement }, drop] = useDrop({
@@ -113,7 +113,7 @@ const DroppableArrayControl: React.FC<DroppableArrayControlProps> = ({
       cells={cells}
     />
   );
-};
+}
 
 export const DroppableArrayControlRegistration = {
   tester: rankWith(40, isObjectArrayControl), // less than DroppableElement

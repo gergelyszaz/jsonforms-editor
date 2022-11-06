@@ -6,7 +6,6 @@
  * ---------------------------------------------------------------------
  */
 import { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
-import { Typography } from '@material-ui/core';
 import React from 'react';
 
 import { Properties } from './Properties';
@@ -19,9 +18,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 }) => {
   return (
     <>
-      <Typography variant='h6' color='inherit' noWrap>
-        Properties
-      </Typography>
+      <h1>Properties</h1>
       <Properties propertyRenderers={propertyRenderers} />
     </>
   );

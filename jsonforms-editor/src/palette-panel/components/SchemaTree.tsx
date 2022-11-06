@@ -71,21 +71,25 @@ const getChildrenToRender = (schemaElement: SchemaElement) => {
   });
 };
 
-export const SchemaTreeView: React.FC<{
+interface SchemaTreeViewProps {
   schema: SchemaElement | undefined;
-}> = ({ schema }) => (
-  <>
-    <Typography variant='h6' color='inherit' noWrap>
-      Controls
-    </Typography>
-    {schema !== undefined ? (
-      <StyledTreeView defaultExpanded={['']}>
-        <SchemaTreeItem schemaElement={schema} />
-      </StyledTreeView>
-    ) : (
-      <NoSchema />
-    )}
-  </>
-);
+}
+
+export function SchemaTreeView({ schema }: SchemaTreeViewProps) {
+  return (
+    <>
+      <Typography variant='h6' color='inherit' noWrap>
+        Controls
+      </Typography>
+      {schema !== undefined ? (
+        <StyledTreeView defaultExpanded={['']}>
+          <SchemaTreeItem schemaElement={schema} />
+        </StyledTreeView>
+      ) : (
+        <NoSchema />
+      )}
+    </>
+  );
+}
 
 const NoSchema = () => <div>No JSON Schema available</div>;

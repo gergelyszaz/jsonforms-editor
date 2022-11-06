@@ -21,9 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TabContent: React.FC<TabContentProps> = (
-  props: TabContentProps
-) => {
+export function TabContent(props: TabContentProps) {
   const { children, index, currentIndex, ...other } = props;
   const classes = useStyles();
   return (
@@ -35,4 +33,4 @@ export const TabContent: React.FC<TabContentProps> = (
       {currentIndex === index && children}
     </div>
   );
-};
+}

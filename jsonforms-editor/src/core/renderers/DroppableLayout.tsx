@@ -57,14 +57,14 @@ interface DroppableLayoutProps {
   cells?: JsonFormsCellRendererRegistryEntry[];
 }
 
-export const DroppableLayout: React.FC<DroppableLayoutProps> = ({
+export function DroppableLayout({
   schema,
   layout,
   path,
   direction,
   renderers,
   cells,
-}) => {
+}: DroppableLayoutProps) {
   const classes = useLayoutStyles();
   return (
     <Grid
@@ -101,7 +101,7 @@ export const DroppableLayout: React.FC<DroppableLayoutProps> = ({
       ))}
     </Grid>
   );
-};
+}
 
 interface DropPointProps {
   layout: EditorLayout;
@@ -122,7 +122,7 @@ const useDropPointStyles = makeStyles((theme) => ({
   }),
 }));
 
-const DropPoint: React.FC<DropPointProps> = ({ layout, index }) => {
+function DropPoint({ layout, index }: DropPointProps) {
   const dispatch = useDispatch();
   const rootSchema = useSchema();
   const [{ isOver, uiSchemaElement, schemaUUID }, drop] = useDrop({
@@ -198,7 +198,7 @@ const DropPoint: React.FC<DropPointProps> = ({ layout, index }) => {
       xs
     ></Grid>
   );
-};
+}
 
 const getDataPath = (uischema: EditorUISchemaElement): string => {
   const path = getUISchemaPath(uischema);
