@@ -12,7 +12,6 @@ import {
 } from '@gergelyszaz/jsonforms-editor';
 import React from 'react';
 
-import { Footer } from './components/Footer';
 import { ExampleSchemaService } from './core/schemaService';
 
 const schemaService = new ExampleSchemaService();
@@ -21,6 +20,5 @@ export const App = () => (
     schemaService={schemaService}
     schemaProviders={defaultSchemaProviders}
     schemaDecorators={defaultSchemaDecorators}
-    footer={Footer}
   />
 );

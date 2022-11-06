@@ -31,7 +31,6 @@ const config = {
   external: [
     ...Object.keys(packageJson.dependencies),
     /^@material-ui\/.*/,
-    'react-reflex/styles.css',
     'react-spring/web.cjs',
   ],
 };

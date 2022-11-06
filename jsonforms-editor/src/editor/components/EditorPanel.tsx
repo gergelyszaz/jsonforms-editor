@@ -20,11 +20,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export interface EditorTab {
-  name: string;
-  Component: React.ComponentType;
-}
-
 interface EditorPanelProps {
   editorRenderers: JsonFormsRendererRegistryEntry[];
 }

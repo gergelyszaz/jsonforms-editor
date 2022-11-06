@@ -6,7 +6,6 @@
  * ---------------------------------------------------------------------
  */
 import './JsonFormsEditor.css';
-import 'react-reflex/styles.css';
 
 import { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
 import { makeStyles } from '@material-ui/core';
@@ -48,10 +47,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'stretch',
   },
   rightPane: {},
-  reflexContainer: {
-    flex: '1',
-    alignItems: 'stretch',
-  },
 }));
 
 interface JsonFormsEditorProps {
