@@ -153,7 +153,7 @@ export const EditorElement: React.FC<EditorElementProps> = ({
           item
           container
           className={classes.elementControls}
-          justify='flex-end'
+          justifyContent='flex-end'
           alignItems='center'
           xs
         >
