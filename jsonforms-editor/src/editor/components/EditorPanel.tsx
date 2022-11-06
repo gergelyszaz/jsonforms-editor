@@ -6,10 +6,9 @@
  * ---------------------------------------------------------------------
  */
 import { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
-import { makeStyles, Tab, Tabs } from '@material-ui/core';
-import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core';
+import React from 'react';
 
-import { TabContent } from '../../core/components';
 import { Editor } from './Editor';
 
 const useStyles = makeStyles(() => ({
@@ -27,25 +26,14 @@ export interface EditorTab {
 }
 
 interface EditorPanelProps {
-  editorTabs?: EditorTab[];
   editorRenderers: JsonFormsRendererRegistryEntry[];
 }
-export const EditorPanel: React.FC<EditorPanelProps> = ({
-  editorTabs,
-  editorRenderers,
-}) => {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setSelectedTab(newValue);
-  };
+export function EditorPanel({ editorRenderers }: EditorPanelProps) {
   const classes = useStyles();
   return (
     <div className={classes.editorPanel}>
-      <Tabs value={selectedTab} onChange={handleTabChange}>
-        <Tab label='Editor' />
-      </Tabs>
-
+      <h1>Editor</h1>
       <Editor editorRenderers={editorRenderers} />
     </div>
   );
-};
+}

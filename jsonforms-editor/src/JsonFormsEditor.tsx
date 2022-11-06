@@ -10,10 +10,9 @@ import 'react-reflex/styles.css';
 
 import { JsonFormsRendererRegistryEntry } from '@jsonforms/core';
 import { makeStyles } from '@material-ui/core';
-import React, { ComponentType, useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
-import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex';
 
 import {
   CategorizationService,
@@ -29,8 +28,7 @@ import { Actions, editorReducer } from './core/model';
 import { SelectedElement } from './core/selection';
 import { tryFindByUUID } from './core/util/schemasUtil';
 import { defaultEditorRenderers, EditorPanel } from './editor';
-import { EditorTab } from './editor/components/EditorPanel';
-import { PalettePanel, PaletteTab } from './palette-panel';
+import { PalettePanel } from './palette-panel';
 import { defaultPropertyRenderers, PropertiesPanel } from './properties';
 import {
   PropertiesService,
@@ -60,9 +58,7 @@ interface JsonFormsEditorProps {
   schemaService?: SchemaService;
   schemaProviders: PropertySchemasProvider[];
   schemaDecorators: PropertySchemasDecorator[];
-  editorTabs?: EditorTab[] | null;
   paletteService?: PaletteService;
-  paletteTabs?: PaletteTab[] | null;
   editorRenderers?: JsonFormsRendererRegistryEntry[];
   propertyRenderers?: JsonFormsRendererRegistryEntry[];
 
@@ -71,8 +67,6 @@ interface JsonFormsEditorProps {
     schemaDecorators: PropertySchemasDecorator[]
   ) => PropertiesService;
   categorizationService?: CategorizationService;
-  header?: ComponentType | null;
-  footer?: ComponentType | null;
 }
 const defaultSchemaService = new EmptySchemaService();
 const defaultPaletteService = new DefaultPaletteService();
