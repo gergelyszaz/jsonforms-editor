@@ -157,7 +157,7 @@ function DropPoint({ layout, index }: DropPointProps) {
             ? dispatch(
                 Actions.addScopedElementToLayout(
                   uiSchemaElement,
-                  layout.uuid,
+                  layout.uuid!,
                   index,
                   schemaUUID
                 )
@@ -165,7 +165,7 @@ function DropPoint({ layout, index }: DropPointProps) {
             : dispatch(
                 Actions.addUnscopedElementToLayout(
                   uiSchemaElement,
-                  layout.uuid,
+                  layout.uuid!,
                   index
                 )
               );
@@ -174,7 +174,7 @@ function DropPoint({ layout, index }: DropPointProps) {
           dispatch(
             Actions.moveUiSchemaElement(
               uiSchemaElement.uuid,
-              layout.uuid,
+              layout.uuid!,
               index,
               schemaUUID
             )

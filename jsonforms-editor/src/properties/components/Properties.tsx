@@ -55,7 +55,7 @@ export const Properties: React.FC<PropertiesProps> = ({
     ({ data: updatedProperties }) => {
       if (uiElement && !isEqual(data, updatedProperties)) {
         dispatch(
-          Actions.updateUISchemaElement(uiElement.uuid, updatedProperties)
+          Actions.updateUISchemaElement(uiElement.uuid!, updatedProperties)
         );
       }
     },

@@ -27,18 +27,18 @@ export class CategorizationServiceImpl implements CategorizationService {
 
   getTabSelection: (categorization: CategorizationLayout) => SelectedElement = (
     categorization
-  ) => this.selectedTabs.get(categorization.uuid);
+  ) => this.selectedTabs.get(categorization.uuid!);
 
   setTabSelection: (
     categorization: CategorizationLayout,
     selection: SelectedElement
   ) => void = (categorization, selection) => {
-    this.selectedTabs.set(categorization.uuid, selection);
+    this.selectedTabs.set(categorization.uuid!, selection);
 
-    if (!this.parentUuids.has(categorization.uuid)) {
+    if (!this.parentUuids.has(categorization.uuid!)) {
       // capture element parents that are Categorization or Category
       this.parentUuids.set(
-        categorization.uuid,
+        categorization.uuid!,
         this.getParentCategoryIds(categorization.parent)
       );
     }
@@ -51,11 +51,11 @@ export class CategorizationServiceImpl implements CategorizationService {
 
   removeElement: (element: EditorUISchemaElement) => void = (element) => {
     // no need to hold the memory for Map entry in this case
-    this.selectedTabs.delete(element.uuid);
-    this.parentUuids.delete(element.uuid);
+    this.selectedTabs.delete(element.uuid!);
+    this.parentUuids.delete(element.uuid!);
 
     this.parentUuids.forEach((parents, uuid, map) => {
-      if (parents.includes(element.uuid)) {
+      if (parents.includes(element.uuid!)) {
         map.delete(uuid);
         this.selectedTabs.delete(uuid);
       }
@@ -73,7 +73,7 @@ export class CategorizationServiceImpl implements CategorizationService {
       categorization.type === 'Category'
     ) {
       return [
-        categorization.uuid,
+        categorization.uuid!,
         ...this.getParentCategoryIds(categorization.parent),
       ];
     } else {

@@ -10,7 +10,7 @@ export interface Parentable<T> {
 }
 
 export interface Identifiable {
-  uuid: string;
+  uuid?: string;
 }
 
 export interface TreeElement<T> extends Parentable<T>, Identifiable {}

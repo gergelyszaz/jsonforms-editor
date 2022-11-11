@@ -82,7 +82,7 @@ export const EditorElement: React.FC<EditorElementProps> = ({
   const classes = useEditorElementStyles();
 
   const uiPath = getUISchemaPath(wrappedElement);
-  const isSelected = selection?.uuid === wrappedElement.uuid;
+  const isSelected = selection?.uuid === wrappedElement.uuid!;
   const ruleEffect = wrappedElement.rule?.effect.toLocaleUpperCase();
 
   const icon =
@@ -102,7 +102,7 @@ export const EditorElement: React.FC<EditorElementProps> = ({
       ref={drag}
       onClick={(event) => {
         event.stopPropagation();
-        const newSelection = { uuid: wrappedElement.uuid };
+        const newSelection = { uuid: wrappedElement.uuid! };
         setSelection(newSelection);
       }}
     >
@@ -161,7 +161,7 @@ export const EditorElement: React.FC<EditorElementProps> = ({
             data-cy={`editorElement-${uiPath}-removeButton`}
             size='small'
             onClick={() => {
-              dispatch(Actions.removeUiSchemaElement(wrappedElement.uuid));
+              dispatch(Actions.removeUiSchemaElement(wrappedElement.uuid!));
             }}
           >
             <DeleteIcon />

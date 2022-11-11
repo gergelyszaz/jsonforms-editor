@@ -63,9 +63,9 @@ function DroppableCategorizationLayout(
       const selectedUuid = categories[value].uuid;
 
       categorizationService.setTabSelection(uischema, {
-        uuid: selectedUuid,
+        uuid: selectedUuid!,
       });
-      setSelection({ uuid: selectedUuid });
+      setSelection({ uuid: selectedUuid! });
       setCurrentIndex(value);
     }
   };

@@ -78,11 +78,11 @@ function DroppableArrayControl({
     drop: (item): void => {
       switch (item.type) {
         case NEW_UI_SCHEMA_ELEMENT:
-          dispatch(Actions.addDetail(uischema.uuid, uiSchemaElement));
+          dispatch(Actions.addDetail(uischema.uuid!, uiSchemaElement));
           break;
         case MOVE_UI_SCHEMA_ELEMENT:
           dispatch(
-            Actions.moveUiSchemaElement(uiSchemaElement.uuid, uischema.uuid, 0)
+            Actions.moveUiSchemaElement(uiSchemaElement.uuid, uischema.uuid!, 0)
           );
           break;
       }
