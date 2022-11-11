@@ -21,11 +21,6 @@ Note that the build uses the built version of the `@jsonforms/editor` component.
 
 The app is based on `create-react-app`.
 
-We use `rescripts` to customize non-configurable CRA features:
-
-- We add the `MonacoWebpackPlugin` to the build
-- We also add the `@jsonforms/editor` sources to the build.
-
 ### Scripts
 
 - Start the app with `npm start`
